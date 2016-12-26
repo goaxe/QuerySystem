@@ -1,0 +1,12 @@
+               USER    QUERY   APP ATTEMPT_M   ATTEMPT_R   CONTAINER
+USER            1       2
+QUERY
+APP
+ATTEMPT_M
+ATTEMPT_R
+CONTAINER
+
+// 0 empty
+// 1 1:1
+// 2 1:n
+// 3 m:n

@@ -1,0 +1,32 @@
+{
+    "core": {
+        "data": [
+            "user1",
+            {
+                "text": "user2",
+                "state": {
+                    "opened": true,
+                    "selected": true
+                },
+                "children": [
+                    {
+                        "text": "query1",
+                        "children": [
+                            "attempt1_m_xx",
+                            "container_x_x_x",
+                            "attempt1_r_xx"
+                        ]
+                    },
+                    {
+                        "text": "query2",
+                        "children": [
+                            "attempt2_m_xx",
+                            "container_x_x_x",
+                            "attempt2_r_xx"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
