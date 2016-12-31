@@ -1,23 +1,25 @@
-import json
-from itertools import combinations
-from TypeRelationGraph import *
+# encoding=utf-8
 
-JOIN_CHAR = '*'
+import json
+import CommonUtils
+from itertools import combinations
+from TypeRelationGraph import getTypeRelationGraph
 
 
 class Node:
-    def __init__(self, name):
+    def __init__(self, name, isEqual=False):
         self.signature = set()
         if isinstance(name, list) or isinstance(name, set):
             self.signature.update(name)
         else:
-            self.signature.update(name.split(JOIN_CHAR))
+            self.signature.update(name.split(CommonUtils.JOIN_CHAR))
+        self.isEqual = isEqual
 
     def __repr__(self):
         return self.getName()
 
     def getName(self):
-        return JOIN_CHAR.join(self.signature)
+        return CommonUtils.JOIN_CHAR.join(self.signature)
 
     def __hash__(self):
         return hash(self.getName())
@@ -26,20 +28,20 @@ class Node:
         return self.signature == other.signature
 
 
-def byteify(input):
-    if isinstance(input, dict):
+def byteify(inData):
+    if isinstance(inData, dict):
         return {byteify(key): byteify(value)
-                for key, value in input.iteritems()}
-    elif isinstance(input, list):
-        return [byteify(element) for element in input]
-    elif isinstance(input, unicode):
-        return input.encode('utf-8')
+                for key, value in inData.iteritems()}
+    elif isinstance(inData, list):
+        return [byteify(element) for element in inData]
+    elif isinstance(inData, unicode):
+        return inData.encode('utf-8')
     else:
-        return input
+        return inData
 
 
 def getEvents():
-    f = open("data/events.data")
+    f = open("../data/events.data")
     events = []
     while 1:
         line = f.readline()
@@ -121,7 +123,7 @@ def merge11Nodes(typeRelationGraph, s3Graph, events):
         if len(typeNames) == 1:
             continue
 
-        node = Node(typeNames)
+        node = Node(typeNames, True)
         s3Graph[node] = set()
         kvList = []
 
@@ -247,9 +249,9 @@ def mergeMNNodes(typeRelationGraph, s3Graph, events):
                 for node in s3Graph.keys():
                     if node.signature.issubset(newNode.signature):
                         s3Graph[node].add(newNode)
-        for type in C:
-            if Node(type) not in markedNodes:
-                deleteTypeInS3Graph(s3Graph, type)
+        for typeName in C:
+            if Node(typeName) not in markedNodes:
+                deleteTypeInS3Graph(s3Graph, typeName)
 
 
 def filterNonObjects(s3Graph):
@@ -275,7 +277,7 @@ def constructS3Graph():
     merge11Nodes(typeRelationGraph, s3Graph, events)
     mergeMNNodes(typeRelationGraph, s3Graph, events)
     filterNonObjects(s3Graph)
-    print s3Graph
+    return s3Graph
 
 
 if __name__ == '__main__':
