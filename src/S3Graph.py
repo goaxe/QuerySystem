@@ -1,6 +1,5 @@
 # encoding=utf-8
 
-import json
 import CommonUtils
 from itertools import combinations
 from TypeRelationGraph import getTypeRelationGraph
@@ -26,33 +25,6 @@ class Node:
 
     def __eq__(self, other):
         return self.signature == other.signature
-
-
-def byteify(inData):
-    if isinstance(inData, dict):
-        return {byteify(key): byteify(value)
-                for key, value in inData.iteritems()}
-    elif isinstance(inData, list):
-        return [byteify(element) for element in inData]
-    elif isinstance(inData, unicode):
-        return inData.encode('utf-8')
-    else:
-        return inData
-
-
-def getEvents():
-    f = open("../data/events.data")
-    events = []
-    while 1:
-        line = f.readline()
-        if not line:
-            break
-        try:
-            events.append(byteify(json.loads(line.encode('utf8'))))
-        except Exception as e:
-            print e
-    f.close()
-    return events
 
 
 def initS3GraphFromTypeRelationGraph(typeRelationGraph):
@@ -269,8 +241,7 @@ def filterNonObjects(s3Graph):
             s3Graph[node].remove(node)
 
 
-def constructS3Graph():
-    events = getEvents()
+def constructS3Graph(events):
     typeRelationGraph = getTypeRelationGraph(events)
     s3Graph = initS3GraphFromTypeRelationGraph(typeRelationGraph)
     # 3 steps to construct S3Graph
@@ -281,4 +252,4 @@ def constructS3Graph():
 
 
 if __name__ == '__main__':
-    constructS3Graph()
+    print constructS3Graph(CommonUtils.getEvents())

@@ -1,8 +1,8 @@
 # encoding=utf-8
 
-from CommonUtils import JOIN_CHAR
-from S3Graph import Node
-from S3Graph import constructS3Graph, getEvents
+from CommonUtils import JOIN_CHAR, getEvents
+from S3Graph import Node, constructS3Graph
+import json
 
 
 class Si3GraphNode:
@@ -21,16 +21,34 @@ class Si3GraphNode:
     def __repr__(self):
         return self.getName()
 
+    def reprJSON(self):
+        return JOIN_CHAR.join(self.identifiers.values())
+
     def getName(self):
+        return JOIN_CHAR.join(self.identifiers.values())
+        '''
         return '{signature: ' + JOIN_CHAR.join(self.signature) + ', identifiers: ' + str(self.identifiers)\
                + ', events: ' + str(len(self.events)) + ', links: ' + str(len(self.links)) \
                + ', children: ' + str(len(self.children)) + '}'
+        '''
 
     def __hash__(self):
         return hash(self.getName())
 
     def __eq__(self, other):
         return self.signature == other.signature and self.identifiers == other.identifiers
+
+
+class ComplexEncoder(json.JSONEncoder):
+    def default(self, o):
+        if hasattr(o, 'reprJSON'):
+            return o.reprJSON()
+        if isinstance(o, set):
+            ret = []
+            for item in o:
+                ret.append(json.JSONEncoder.encode(item))
+            return ret
+        return json.JSONEncoder.default(self, o)
 
 
 def s3NodeMatchEvent(s3Node, event):
@@ -96,17 +114,59 @@ def updateSi3Graph(Si3Graph, S3Graph, event):
                 jNode.links.add(iNode)
 
 
-def constructSi3Graph():
-    events = getEvents()
-    si3Graph = {}
-    s3Graph = constructS3Graph()
-    print 's3Graph: ', s3Graph
+def getRootNodesFromS3Graph(s3Graph):
+    allNodes = set(s3Graph.keys())
+    childrenNodes = set()
+    for nodes in s3Graph.values():
+        childrenNodes.update(nodes)
+    return allNodes - childrenNodes
 
+
+def constructSi3Graph(s3Graph, events):
+    si3Graph = {}
     for event in events:
         updateSi3Graph(si3Graph, s3Graph, event)
-        print event
-        print si3Graph
+
+    return si3Graph
+
+
+def getJsTreeData():
+    s3Graph = constructS3Graph(getEvents())
+    print 's3Graph: ', s3Graph
+    si3Graph = constructSi3Graph(s3Graph, getEvents())
+    print 'si3Graph: ', si3Graph
+    rootNodes = getRootNodesFromS3Graph(s3Graph)
+    print 'rootNodes: ', rootNodes
+
+    jsTreeData = constructJSTreeData(si3Graph, rootNodes)
+
+    return jsTreeData
+
+
+def constructJSTreeDataRecursively(data, si3Node):
+    data['text'] = si3Node.getName()
+    data['children'] = list()
+    children = list(si3Node.children)
+    for i in range(len(children)):
+        data['children'].append(dict())
+        constructJSTreeDataRecursively(data['children'][i], children[i])
+
+
+def constructJSTreeData(si3Graph, rootNodes):
+    jsTreeData = dict()
+    rootsData = []
+    rootSi3Nodes = []
+    for rootNode in rootNodes:
+        rootSi3Nodes.extend(si3Graph[rootNode])
+    for rootSi3Node in rootSi3Nodes:
+        rootData = dict()
+        constructJSTreeDataRecursively(rootData, rootSi3Node)
+        rootsData.append(rootData)
+    jsTreeData['core'] = dict()
+    jsTreeData['core']['data'] = rootsData
+
+    return jsTreeData
 
 
 if __name__ == '__main__':
-    constructSi3Graph()
+    print getJsTreeData()

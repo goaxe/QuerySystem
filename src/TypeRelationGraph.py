@@ -1,14 +1,12 @@
 
 
-def getAllTypes(events):
-    typeSet = set()
-    for event in events:
-        typeSet.update(event.keys())
+def getTypeList(events):
+    typeSet = set(typeName for event in events for typeName in event.keys())
     return list(typeSet)
 
 
 def getTypePairListGraph(events):
-    typeList = getAllTypes(events)
+    typeList = getTypeList(events)
     typeSize = len(typeList)
     typeToIndex = {}
     for i in range(typeSize):
@@ -55,7 +53,7 @@ def getTypeRelation(ijDict, jiDict):
 
 # 1->1:1  2->1:n  3:m:n   -2->n:1
 def getTypeRelationGraph(events):
-    typeList = getAllTypes(events)
+    typeList = getTypeList(events)
     typePairListGraph = getTypePairListGraph(events)
 
     typeRelationGraph = {}
@@ -87,4 +85,3 @@ def getTypeRelationGraph(events):
                 typeRelationGraph[jType][iType] = 3
 
     return typeRelationGraph
-
