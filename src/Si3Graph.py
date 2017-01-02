@@ -135,10 +135,6 @@ def getJsTreeData():
     s3Graph = constructS3Graph(getEvents())
     si3Graph = constructSi3Graph(s3Graph, getEvents())
     rootNodes = getRootNodesFromS3Graph(s3Graph)
-    print 's3Graph: ', s3Graph
-    print 'si3Graph: ', si3Graph
-    print 'rootNodes: ', rootNodes
-
     jsTreeData = constructJSTreeData(si3Graph, rootNodes)
 
     return jsTreeData

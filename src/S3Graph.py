@@ -1,7 +1,7 @@
 # encoding=utf-8
 
+from copy import deepcopy
 import CommonUtils
-from itertools import combinations
 import TypeRelationGraph
 
 
@@ -31,6 +31,8 @@ s3Graph = dict()
 
 
 def initS3GraphFromTypeRelationGraph(typeRelationGraph):
+    global s3Graph
+    s3Graph = dict()
     for k, v in typeRelationGraph.items():
         keyNode = Node(k)
         s3Graph[keyNode] = set()
@@ -244,22 +246,15 @@ def filterNonObjects():
 
 
 def constructS3Graph(events):
-    # for i in range(len(events)):
-    #     updated = TypeRelationGraph.updateTypeRelationGraph(events[i])
-    #     if updated:
-    #         typeRelationGraph = TypeRelationGraph.typeRelationGraph
-    #         initS3GraphFromTypeRelationGraph(TypeRelationGraph.typeRelationGraph)
-    #         merge11Nodes(typeRelationGraph, events[0:i + 1])
-    #         mergeMNNodes(typeRelationGraph, events[0:i + 1])
-    #         filterNonObjects()
-    #
-    # return s3Graph
-    typeRelationGraph = TypeRelationGraph.getTypeRelationGraph(events)
-    initS3GraphFromTypeRelationGraph(typeRelationGraph)
-    # 3 steps to construct S3Graph
-    merge11Nodes(typeRelationGraph, events)
-    mergeMNNodes(typeRelationGraph, events)
-    filterNonObjects()
+    for i in range(len(events)):
+        updated = TypeRelationGraph.updateTypeRelationGraph(events[i])
+        if updated:
+            typeRelationGraph = TypeRelationGraph.typeRelationGraph
+            initS3GraphFromTypeRelationGraph(typeRelationGraph)
+            subEvents = deepcopy(events[0:i + 1])
+            merge11Nodes(typeRelationGraph, subEvents)
+            mergeMNNodes(typeRelationGraph, subEvents)
+            filterNonObjects()
     return s3Graph
 
 
