@@ -1,39 +1,34 @@
+typePairListGraph = dict()
+typeRelationGraph = dict()
 
 
-def getTypeList(events):
-    typeSet = set(typeName for event in events for typeName in event.keys())
-    return list(typeSet)
+def updateTypePairListGraph(event):
+    itemList = event.items()
+    for i in itemList:
+        for j in itemList:
+            if i == j:
+                continue
+            iName, iValue = i
+            jName, jValue = j
+            if iName not in typePairListGraph:
+                typePairListGraph[iName] = dict()
+            if jName not in typePairListGraph:
+                typePairListGraph[jName] = dict()
+            if iName not in typePairListGraph[jName]:
+                typePairListGraph[jName][iName] = dict()
+            if jName not in typePairListGraph[iName]:
+                typePairListGraph[iName][jName] = dict()
+            if iValue not in typePairListGraph[iName][jName]:
+                typePairListGraph[iName][jName][iValue] = set()
+            if jValue not in typePairListGraph[jName][iName]:
+                typePairListGraph[jName][iName][jValue] = set()
+            typePairListGraph[iName][jName][iValue].add(jValue)
+            typePairListGraph[jName][iName][jValue].add(iValue)
 
 
 def getTypePairListGraph(events):
-    typeList = getTypeList(events)
-    typeSize = len(typeList)
-    typeToIndex = {}
-    for i in range(typeSize):
-        typeToIndex[typeList[i]] = i
-
-    typePairListGraph = {}
-    for typeName in typeList:
-        typePairListGraph[typeName] = {}
-
     for event in events:
-        itemList = event.items()
-        for i in itemList:
-            for j in itemList:
-                if i == j:
-                    continue
-                iName, iValue = i
-                jName, jValue = j
-                if iName not in typePairListGraph[jName]:
-                    typePairListGraph[jName][iName] = {}
-                if jName not in typePairListGraph[iName]:
-                    typePairListGraph[iName][jName] = {}
-                if iValue not in typePairListGraph[iName][jName]:
-                    typePairListGraph[iName][jName][iValue] = set()
-                if jValue not in typePairListGraph[jName][iName]:
-                    typePairListGraph[jName][iName][jValue] = set()
-                typePairListGraph[iName][jName][iValue].add(jValue)
-                typePairListGraph[jName][iName][jValue].add(iValue)
+        updateTypePairListGraph(typePairListGraph, event)
 
     return typePairListGraph
 
@@ -51,37 +46,52 @@ def getTypeRelation(ijDict, jiDict):
     return ijIs11, jiIs11
 
 
-# 1->1:1  2->1:n  3:m:n   -2->n:1
-def getTypeRelationGraph(events):
-    typeList = getTypeList(events)
-    typePairListGraph = getTypePairListGraph(events)
-
-    typeRelationGraph = {}
-    for type in typeList:
-        typeRelationGraph[type] = {}
-
-    for iType in typeList:
-        for jType in typeList:
+def updateTypeRelationGraph(event):
+    updateTypePairListGraph(event)
+    candidateTypes = event.keys()
+    typeRelationGraphUpdated = False
+    for iType in candidateTypes:
+        for jType in candidateTypes:
             if iType == jType:
                 continue
-            if jType not in typePairListGraph[iType]:
-                continue
+            if iType not in typeRelationGraph:
+                typeRelationGraph[iType] = dict()
+                typeRelationGraphUpdated = True
+            if jType not in typeRelationGraph:
+                typeRelationGraph[jType] = dict()
+                typeRelationGraphUpdated = True
+
             ijDict = typePairListGraph[iType][jType]
             jiDict = typePairListGraph[jType][iType]
-
             ijIs11, jiIs11 = getTypeRelation(ijDict, jiDict)
 
             if ijIs11 and jiIs11:
-                typeRelationGraph[iType][jType] = 1
-                typeRelationGraph[jType][iType] = 1
+                if jType not in typeRelationGraph[iType] or typeRelationGraph[iType][jType] != 1:
+                    typeRelationGraph[iType][jType] = 1
+                    typeRelationGraph[jType][iType] = 1
+                    typeRelationGraphUpdated = True
             elif ijIs11 and (not jiIs11):
-                typeRelationGraph[iType][jType] = -2
-                typeRelationGraph[jType][iType] = 2
+                if jType not in typeRelationGraph[iType] or typeRelationGraph[iType][jType] != -2:
+                    typeRelationGraph[iType][jType] = -2
+                    typeRelationGraph[jType][iType] = 2
+                    typeRelationGraphUpdated = True
             elif (not ijIs11) and jiIs11:
-                typeRelationGraph[iType][jType] = 2
-                typeRelationGraph[jType][iType] = -2
+                if jType not in typeRelationGraph[iType] or typeRelationGraph[iType][jType] != 2:
+                    typeRelationGraph[iType][jType] = 2
+                    typeRelationGraph[jType][iType] = -2
+                    typeRelationGraphUpdated = True
             else:
-                typeRelationGraph[iType][jType] = 3
-                typeRelationGraph[jType][iType] = 3
+                if jType not in typeRelationGraph[iType] or typeRelationGraph[iType][jType] != 3:
+                    typeRelationGraph[iType][jType] = 3
+                    typeRelationGraph[jType][iType] = 3
+                    typeRelationGraphUpdated = True
+
+    return typeRelationGraphUpdated
+
+
+# 1->1:1  2->1:n  3:m:n   -2->n:1
+def getTypeRelationGraph(events):
+    for event in events:
+        updateTypeRelationGraph(event)
 
     return typeRelationGraph

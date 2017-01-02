@@ -2,7 +2,7 @@
 
 import CommonUtils
 from itertools import combinations
-from TypeRelationGraph import getTypeRelationGraph
+import TypeRelationGraph
 
 
 class Node:
@@ -27,8 +27,10 @@ class Node:
         return self.signature == other.signature
 
 
+s3Graph = dict()
+
+
 def initS3GraphFromTypeRelationGraph(typeRelationGraph):
-    s3Graph = {}
     for k, v in typeRelationGraph.items():
         keyNode = Node(k)
         s3Graph[keyNode] = set()
@@ -65,10 +67,25 @@ def get11Subsets(typeRelationGraph):
                     iSet.add(jType)
                     queue.append(jType)
 
+    while True:
+        hasMerged = False
+        for iSet in subsets:
+            for jSet in subsets:
+                if iSet == jSet:
+                    continue
+                if iSet & jSet:
+                    subsets.append(iSet | jSet)
+                    subsets.remove(iSet)
+                    subsets.remove(jSet)
+                    hasMerged = True
+                    break
+        if not hasMerged:
+            break
+
     return subsets
 
 
-def mergeNodesInS3Graph(s3Graph, originTypes, newNode):
+def mergeNodesInS3Graph(originTypes, newNode):
     for typeName in originTypes:
         s3Graph[newNode].update(s3Graph[Node(typeName)])
 
@@ -89,7 +106,7 @@ def mergeNodesInS3Graph(s3Graph, originTypes, newNode):
             s3Graph[node].remove(node)
 
 
-def merge11Nodes(typeRelationGraph, s3Graph, events):
+def merge11Nodes(typeRelationGraph, events):
     subsets = get11Subsets(typeRelationGraph)
     for typeNames in subsets:
         if len(typeNames) == 1:
@@ -129,11 +146,11 @@ def merge11Nodes(typeRelationGraph, s3Graph, events):
                     hasExist = True
             if hasExist:
                 for kvDict in kvList:
-                    if kvDict[k] == v:
-                        event[node.getName()] = '*'.join(kvDict[key] for key in node.signature)
+                    if k in kvDict and kvDict[k] == v:
+                        event[node.getName()] = CommonUtils.JOIN_CHAR.join(kvDict[key] for key in (set(node.signature) & set(kvDict.keys())))
                         break
 
-        mergeNodesInS3Graph(s3Graph, typeNames, node)
+        mergeNodesInS3Graph(typeNames, node)
 
 
 def getmnSubsets(typeRelationGraph):
@@ -170,22 +187,7 @@ def getmnSubsets(typeRelationGraph):
     return subsets
 
 
-def getCombination(subset):
-    result = []
-    for i in range(2, len(subset) + 1):
-        result.extend(combinations(subset, i))
-    return result
-
-
-def deleteTypeInGraph(typeRelationGraph, delType):
-    if delType in typeRelationGraph:
-        del typeRelationGraph[delType]
-    for typeName in typeRelationGraph.keys():
-        if delType in typeRelationGraph[typeName]:
-            del typeRelationGraph[typeName][delType]
-
-
-def deleteNodeInS3Graph(s3Graph, deleteNode):
+def deleteNodeInS3Graph(deleteNode):
     if deleteNode in s3Graph:
         del s3Graph[deleteNode]
     for valueSet in s3Graph.values():
@@ -193,11 +195,11 @@ def deleteNodeInS3Graph(s3Graph, deleteNode):
             valueSet.remove(deleteNode)
 
 
-def deleteTypeInS3Graph(s3Graph, deleteType):
-    deleteNodeInS3Graph(s3Graph, Node(deleteType))
+def deleteTypeInS3Graph(deleteType):
+    deleteNodeInS3Graph(Node(deleteType))
 
 
-def mergeMNNodes(typeRelationGraph, s3Graph, events):
+def mergeMNNodes(typeRelationGraph, events):
     subsets = getmnSubsets(typeRelationGraph)
 
     for C in subsets:
@@ -223,10 +225,10 @@ def mergeMNNodes(typeRelationGraph, s3Graph, events):
                         s3Graph[node].add(newNode)
         for typeName in C:
             if Node(typeName) not in markedNodes:
-                deleteTypeInS3Graph(s3Graph, typeName)
+                deleteTypeInS3Graph(typeName)
 
 
-def filterNonObjects(s3Graph):
+def filterNonObjects():
     deletedNodes = []
     for iNode in s3Graph.keys():
         for jNode in s3Graph.keys():
@@ -234,7 +236,7 @@ def filterNonObjects(s3Graph):
                 deletedNodes.append(Node(iNode.signature | jNode.signature))
 
     for deleteNode in deletedNodes:
-        deleteNodeInS3Graph(s3Graph, deleteNode)
+        deleteNodeInS3Graph(deleteNode)
 
     for node in s3Graph.keys():
         if node in s3Graph[node]:
@@ -242,12 +244,22 @@ def filterNonObjects(s3Graph):
 
 
 def constructS3Graph(events):
-    typeRelationGraph = getTypeRelationGraph(events)
-    s3Graph = initS3GraphFromTypeRelationGraph(typeRelationGraph)
+    # for i in range(len(events)):
+    #     updated = TypeRelationGraph.updateTypeRelationGraph(events[i])
+    #     if updated:
+    #         typeRelationGraph = TypeRelationGraph.typeRelationGraph
+    #         initS3GraphFromTypeRelationGraph(TypeRelationGraph.typeRelationGraph)
+    #         merge11Nodes(typeRelationGraph, events[0:i + 1])
+    #         mergeMNNodes(typeRelationGraph, events[0:i + 1])
+    #         filterNonObjects()
+    #
+    # return s3Graph
+    typeRelationGraph = TypeRelationGraph.getTypeRelationGraph(events)
+    initS3GraphFromTypeRelationGraph(typeRelationGraph)
     # 3 steps to construct S3Graph
-    merge11Nodes(typeRelationGraph, s3Graph, events)
-    mergeMNNodes(typeRelationGraph, s3Graph, events)
-    filterNonObjects(s3Graph)
+    merge11Nodes(typeRelationGraph, events)
+    mergeMNNodes(typeRelationGraph, events)
+    filterNonObjects()
     return s3Graph
 
 

@@ -11,7 +11,8 @@ class Si3GraphNode:
         self.signature.update(signature)
         self.identifiers = {}
         for typeName in self.signature:
-            self.identifiers[typeName] = event[typeName]
+            if typeName in event:
+                self.identifiers[typeName] = event[typeName]
         self.events = set()
         self.events.add(str(event))
         self.children = set()
@@ -132,10 +133,10 @@ def constructSi3Graph(s3Graph, events):
 
 def getJsTreeData():
     s3Graph = constructS3Graph(getEvents())
-    print 's3Graph: ', s3Graph
     si3Graph = constructSi3Graph(s3Graph, getEvents())
-    print 'si3Graph: ', si3Graph
     rootNodes = getRootNodesFromS3Graph(s3Graph)
+    print 's3Graph: ', s3Graph
+    print 'si3Graph: ', si3Graph
     print 'rootNodes: ', rootNodes
 
     jsTreeData = constructJSTreeData(si3Graph, rootNodes)
