@@ -72,8 +72,8 @@ def testJoin():
 
 
 def testRe():
-    line = '2017-01-03 11:01:25,041 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.SchedulerNode: Assigned container container_1483412440498_0001_01_000001 of capacity <memory:2048, vCores:1> on host tfs04:38559, which has 1 containers, <memory:2048, vCores:1> used and <memory:6144, vCores:7> available after allocation'
-    m = re.search('container [a-z]+_[0-9]+_[0-9]+_[0-9]+_[0-9]+', line, re.I)
+    line = '2017-01-03 11:01:03,223 WARN org.apache.hadoop.yarn.server.resourcemanager.rmnode.RMNodeImpl: Cannot get RMApp by appId=application_1483411792436_0003, just added it to finishedApplications list for cleanup'
+    m = re.search('[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2},[0-9]{3}', line, re.I)
     if m:
         print 'match: ', m.group()
     else:
@@ -87,4 +87,4 @@ def testSplit():
 
 
 if __name__ == '__main__':
-    testSplit()
+    testRe()

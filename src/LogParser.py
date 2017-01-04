@@ -15,6 +15,15 @@ def parse(line):
         'attempt=[a-z]+_[0-9]+_[0-9]+_[0-9]+',
         'attempt [a-z]+_[0-9]+_[0-9]+_[0-9]+'
     ]
+    timeRegex = '[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2},[0-9]{3}'
+
+    log = dict()
+    m = re.search(timeRegex, line)
+    if m:
+        log['timeline'] = str(m.group())
+    else:
+        print 'not match'
+        return log
 
     event = dict()
     for regex in regexList:
@@ -31,24 +40,27 @@ def parse(line):
                 event['container'] = value
             else:
                 event[key] = value
-    return event
+    log['event'] = event
+    return log
 
 
 def parseLog():
-    events = []
+    logs = []
     f = open('./data/yarn-root-resourcemanager-tfs01.log')
     while True:
         line = f.readline()
         if not line:
             break
-        event = parse(line)
-        if event:
-            events.append(event)
+        log = parse(line)
+        if log and log['event']:
+            logs.append(log)
     f.close()
     f = open('./data/parser.data', 'w')
-    for event in events:
-        f.write(str(event) + '\n')
+    for log in logs:
+        f.write(str(log) + '\n')
     f.close()
+    events = [log['event'] for log in logs]
+
 
     return events
 

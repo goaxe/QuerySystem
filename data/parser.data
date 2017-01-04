@@ -1,190 +1,190 @@
-{'appid': 'application_1483411792436_0001'}
-{'appid': 'application_1483411792436_0003'}
-{'appid': 'application_1483411792436_0001'}
-{'appid': 'application_1483411792436_0002'}
-{'appid': 'application_1483411792436_0003'}
-{'user': 'root', 'appid': 'application_1483412440498_0001'}
-{'attempt': 'appattempt_1483412440498_0001_000001'}
-{'container': 'container_1483412440498_0001_01_000001', 'user': 'root', 'appid': 'application_1483412440498_0001'}
-{'container': 'container_1483412440498_0001_01_000001'}
-{'attempt': 'appattempt_1483412440498_0001_000001'}
-{'container': 'container_1483412440498_0001_01_000001'}
-{'attempt': 'appattempt_1483412440498_0001_000001', 'user': 'root', 'appid': 'application_1483412440498_0001'}
-{'container': 'container_1483412440498_0001_01_000002', 'user': 'root', 'appid': 'application_1483412440498_0001'}
-{'container': 'container_1483412440498_0001_01_000002'}
-{'attempt': 'appattempt_1483412440498_0001_000001'}
-{'container': 'container_1483412440498_0001_01_000003', 'user': 'root', 'appid': 'application_1483412440498_0001'}
-{'container': 'container_1483412440498_0001_01_000003'}
-{'attempt': 'appattempt_1483412440498_0001_000001'}
-{'container': 'container_1483412440498_0001_01_000004', 'user': 'root', 'appid': 'application_1483412440498_0001'}
-{'container': 'container_1483412440498_0001_01_000004'}
-{'attempt': 'appattempt_1483412440498_0001_000001'}
-{'container': 'container_1483412440498_0001_01_000004', 'user': 'root', 'appid': 'application_1483412440498_0001'}
-{'container': 'container_1483412440498_0001_01_000004'}
-{'user': 'root'}
-{'attempt': 'appattempt_1483412440498_0001_000001', 'container': 'container_1483412440498_0001_01_000004'}
-{'container': 'container_1483412440498_0001_01_000003', 'user': 'root', 'appid': 'application_1483412440498_0001'}
-{'container': 'container_1483412440498_0001_01_000003'}
-{'user': 'root'}
-{'attempt': 'appattempt_1483412440498_0001_000001', 'container': 'container_1483412440498_0001_01_000003'}
-{'container': 'container_1483412440498_0001_01_000002', 'user': 'root', 'appid': 'application_1483412440498_0001'}
-{'container': 'container_1483412440498_0001_01_000002'}
-{'user': 'root'}
-{'attempt': 'appattempt_1483412440498_0001_000001', 'container': 'container_1483412440498_0001_01_000002'}
-{'container': 'container_1483412440498_0001_01_000005', 'user': 'root', 'appid': 'application_1483412440498_0001'}
-{'container': 'container_1483412440498_0001_01_000005'}
-{'attempt': 'appattempt_1483412440498_0001_000001'}
-{'container': 'container_1483412440498_0001_01_000005', 'user': 'root', 'appid': 'application_1483412440498_0001'}
-{'container': 'container_1483412440498_0001_01_000005'}
-{'user': 'root'}
-{'attempt': 'appattempt_1483412440498_0001_000001', 'container': 'container_1483412440498_0001_01_000005'}
-{'attempt': 'appattempt_1483412440498_0001_000001'}
-{'container': 'container_1483412440498_0001_01_000001', 'user': 'root', 'appid': 'application_1483412440498_0001'}
-{'container': 'container_1483412440498_0001_01_000001'}
-{'user': 'root'}
-{'attempt': 'appattempt_1483412440498_0001_000001', 'container': 'container_1483412440498_0001_01_000001'}
-{'attempt': 'appattempt_1483412440498_0001_000001'}
-{'user': 'root', 'appid': 'application_1483412440498_0001'}
-{'user': 'root', 'appid': 'application_1483412440498_0001'}
-{'user': 'root', 'appid': 'application_1483412440498_0002'}
-{'attempt': 'appattempt_1483412440498_0002_000001'}
-{'container': 'container_1483412440498_0002_01_000001', 'user': 'root', 'appid': 'application_1483412440498_0002'}
-{'container': 'container_1483412440498_0002_01_000001'}
-{'attempt': 'appattempt_1483412440498_0002_000001'}
-{'container': 'container_1483412440498_0002_01_000001'}
-{'attempt': 'appattempt_1483412440498_0002_000001', 'user': 'root', 'appid': 'application_1483412440498_0002'}
-{'container': 'container_1483412440498_0002_01_000002', 'user': 'root', 'appid': 'application_1483412440498_0002'}
-{'container': 'container_1483412440498_0002_01_000002'}
-{'attempt': 'appattempt_1483412440498_0002_000001'}
-{'container': 'container_1483412440498_0002_01_000003', 'user': 'root', 'appid': 'application_1483412440498_0002'}
-{'container': 'container_1483412440498_0002_01_000003'}
-{'attempt': 'appattempt_1483412440498_0002_000001'}
-{'container': 'container_1483412440498_0002_01_000002', 'user': 'root', 'appid': 'application_1483412440498_0002'}
-{'container': 'container_1483412440498_0002_01_000002'}
-{'user': 'root'}
-{'attempt': 'appattempt_1483412440498_0002_000001', 'container': 'container_1483412440498_0002_01_000002'}
-{'container': 'container_1483412440498_0002_01_000004', 'user': 'root', 'appid': 'application_1483412440498_0002'}
-{'container': 'container_1483412440498_0002_01_000004'}
-{'attempt': 'appattempt_1483412440498_0002_000001'}
-{'container': 'container_1483412440498_0002_01_000003', 'user': 'root', 'appid': 'application_1483412440498_0002'}
-{'container': 'container_1483412440498_0002_01_000003'}
-{'user': 'root'}
-{'attempt': 'appattempt_1483412440498_0002_000001', 'container': 'container_1483412440498_0002_01_000003'}
-{'container': 'container_1483412440498_0002_01_000004', 'user': 'root', 'appid': 'application_1483412440498_0002'}
-{'container': 'container_1483412440498_0002_01_000004'}
-{'user': 'root'}
-{'attempt': 'appattempt_1483412440498_0002_000001', 'container': 'container_1483412440498_0002_01_000004'}
-{'attempt': 'appattempt_1483412440498_0002_000001'}
-{'container': 'container_1483412440498_0002_01_000001', 'user': 'root', 'appid': 'application_1483412440498_0002'}
-{'container': 'container_1483412440498_0002_01_000001'}
-{'user': 'root'}
-{'user': 'root', 'appid': 'application_1483412440498_0002'}
-{'attempt': 'appattempt_1483412440498_0002_000001', 'container': 'container_1483412440498_0002_01_000001'}
-{'attempt': 'appattempt_1483412440498_0002_000001'}
-{'user': 'root', 'appid': 'application_1483412440498_0002'}
-{'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'attempt': 'appattempt_1483412440498_0003_000001'}
-{'container': 'container_1483412440498_0003_01_000001', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000001'}
-{'attempt': 'appattempt_1483412440498_0003_000001'}
-{'container': 'container_1483412440498_0003_01_000001'}
-{'attempt': 'appattempt_1483412440498_0003_000001', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000002', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000002'}
-{'attempt': 'appattempt_1483412440498_0003_000001'}
-{'container': 'container_1483412440498_0003_01_000003', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000003'}
-{'attempt': 'appattempt_1483412440498_0003_000001'}
-{'container': 'container_1483412440498_0003_01_000004', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000004'}
-{'attempt': 'appattempt_1483412440498_0003_000001'}
-{'container': 'container_1483412440498_0003_01_000005', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000005'}
-{'attempt': 'appattempt_1483412440498_0003_000001'}
-{'container': 'container_1483412440498_0003_01_000006', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000006'}
-{'attempt': 'appattempt_1483412440498_0003_000001'}
-{'container': 'container_1483412440498_0003_01_000006', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000006'}
-{'user': 'root'}
-{'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000006'}
-{'container': 'container_1483412440498_0003_01_000003', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000003'}
-{'user': 'root'}
-{'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000003'}
-{'container': 'container_1483412440498_0003_01_000007', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000007'}
-{'attempt': 'appattempt_1483412440498_0003_000001'}
-{'container': 'container_1483412440498_0003_01_000008', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000008'}
-{'attempt': 'appattempt_1483412440498_0003_000001'}
-{'container': 'container_1483412440498_0003_01_000009', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000009'}
-{'attempt': 'appattempt_1483412440498_0003_000001'}
-{'container': 'container_1483412440498_0003_01_000010', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000010'}
-{'attempt': 'appattempt_1483412440498_0003_000001'}
-{'container': 'container_1483412440498_0003_01_000011', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000011'}
-{'attempt': 'appattempt_1483412440498_0003_000001'}
-{'container': 'container_1483412440498_0003_01_000012', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000012'}
-{'attempt': 'appattempt_1483412440498_0003_000001'}
-{'container': 'container_1483412440498_0003_01_000004', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000004'}
-{'user': 'root'}
-{'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000004'}
-{'container': 'container_1483412440498_0003_01_000013', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000013'}
-{'attempt': 'appattempt_1483412440498_0003_000001'}
-{'container': 'container_1483412440498_0003_01_000012', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000012'}
-{'user': 'root'}
-{'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000012'}
-{'container': 'container_1483412440498_0003_01_000013', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000013'}
-{'user': 'root'}
-{'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000013'}
-{'container': 'container_1483412440498_0003_01_000014', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000014'}
-{'attempt': 'appattempt_1483412440498_0003_000001'}
-{'container': 'container_1483412440498_0003_01_000002', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000002'}
-{'user': 'root'}
-{'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000002'}
-{'container': 'container_1483412440498_0003_01_000014', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000014'}
-{'user': 'root'}
-{'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000014'}
-{'container': 'container_1483412440498_0003_01_000005', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000005'}
-{'user': 'root'}
-{'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000005'}
-{'container': 'container_1483412440498_0003_01_000007', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000007'}
-{'user': 'root'}
-{'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000007'}
-{'container': 'container_1483412440498_0003_01_000010', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000010'}
-{'user': 'root'}
-{'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000010'}
-{'container': 'container_1483412440498_0003_01_000011', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000011'}
-{'user': 'root'}
-{'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000011'}
-{'container': 'container_1483412440498_0003_01_000008', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000008'}
-{'user': 'root'}
-{'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000008'}
-{'container': 'container_1483412440498_0003_01_000009', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000009'}
-{'user': 'root'}
-{'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000009'}
-{'attempt': 'appattempt_1483412440498_0003_000001'}
-{'container': 'container_1483412440498_0003_01_000001', 'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'container': 'container_1483412440498_0003_01_000001'}
-{'user': 'root'}
-{'user': 'root', 'appid': 'application_1483412440498_0003'}
-{'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000001'}
-{'attempt': 'appattempt_1483412440498_0003_000001'}
-{'user': 'root', 'appid': 'application_1483412440498_0003'}
+{'timeline': '2017-01-03 11:01:02,970', 'event': {'appid': 'application_1483411792436_0001'}}
+{'timeline': '2017-01-03 11:01:02,971', 'event': {'appid': 'application_1483411792436_0003'}}
+{'timeline': '2017-01-03 11:01:03,223', 'event': {'appid': 'application_1483411792436_0001'}}
+{'timeline': '2017-01-03 11:01:03,223', 'event': {'appid': 'application_1483411792436_0002'}}
+{'timeline': '2017-01-03 11:01:03,223', 'event': {'appid': 'application_1483411792436_0003'}}
+{'timeline': '2017-01-03 11:01:24,943', 'event': {'user': 'root', 'appid': 'application_1483412440498_0001'}}
+{'timeline': '2017-01-03 11:01:25,011', 'event': {'attempt': 'appattempt_1483412440498_0001_000001'}}
+{'timeline': '2017-01-03 11:01:25,040', 'event': {'container': 'container_1483412440498_0001_01_000001', 'user': 'root', 'appid': 'application_1483412440498_0001'}}
+{'timeline': '2017-01-03 11:01:25,041', 'event': {'container': 'container_1483412440498_0001_01_000001'}}
+{'timeline': '2017-01-03 11:01:25,041', 'event': {'attempt': 'appattempt_1483412440498_0001_000001'}}
+{'timeline': '2017-01-03 11:01:25,119', 'event': {'container': 'container_1483412440498_0001_01_000001'}}
+{'timeline': '2017-01-03 11:01:33,537', 'event': {'attempt': 'appattempt_1483412440498_0001_000001', 'user': 'root', 'appid': 'application_1483412440498_0001'}}
+{'timeline': '2017-01-03 11:01:35,292', 'event': {'container': 'container_1483412440498_0001_01_000002', 'user': 'root', 'appid': 'application_1483412440498_0001'}}
+{'timeline': '2017-01-03 11:01:35,292', 'event': {'container': 'container_1483412440498_0001_01_000002'}}
+{'timeline': '2017-01-03 11:01:35,292', 'event': {'attempt': 'appattempt_1483412440498_0001_000001'}}
+{'timeline': '2017-01-03 11:01:36,049', 'event': {'container': 'container_1483412440498_0001_01_000003', 'user': 'root', 'appid': 'application_1483412440498_0001'}}
+{'timeline': '2017-01-03 11:01:36,049', 'event': {'container': 'container_1483412440498_0001_01_000003'}}
+{'timeline': '2017-01-03 11:01:36,049', 'event': {'attempt': 'appattempt_1483412440498_0001_000001'}}
+{'timeline': '2017-01-03 11:01:37,051', 'event': {'container': 'container_1483412440498_0001_01_000004', 'user': 'root', 'appid': 'application_1483412440498_0001'}}
+{'timeline': '2017-01-03 11:01:37,051', 'event': {'container': 'container_1483412440498_0001_01_000004'}}
+{'timeline': '2017-01-03 11:01:37,052', 'event': {'attempt': 'appattempt_1483412440498_0001_000001'}}
+{'timeline': '2017-01-03 11:01:38,734', 'event': {'container': 'container_1483412440498_0001_01_000004', 'user': 'root', 'appid': 'application_1483412440498_0001'}}
+{'timeline': '2017-01-03 11:01:38,734', 'event': {'container': 'container_1483412440498_0001_01_000004'}}
+{'timeline': '2017-01-03 11:01:38,735', 'event': {'user': 'root'}}
+{'timeline': '2017-01-03 11:01:38,737', 'event': {'attempt': 'appattempt_1483412440498_0001_000001', 'container': 'container_1483412440498_0001_01_000004'}}
+{'timeline': '2017-01-03 11:01:45,245', 'event': {'container': 'container_1483412440498_0001_01_000003', 'user': 'root', 'appid': 'application_1483412440498_0001'}}
+{'timeline': '2017-01-03 11:01:45,246', 'event': {'container': 'container_1483412440498_0001_01_000003'}}
+{'timeline': '2017-01-03 11:01:45,246', 'event': {'user': 'root'}}
+{'timeline': '2017-01-03 11:01:45,247', 'event': {'attempt': 'appattempt_1483412440498_0001_000001', 'container': 'container_1483412440498_0001_01_000003'}}
+{'timeline': '2017-01-03 11:01:46,550', 'event': {'container': 'container_1483412440498_0001_01_000002', 'user': 'root', 'appid': 'application_1483412440498_0001'}}
+{'timeline': '2017-01-03 11:01:46,550', 'event': {'container': 'container_1483412440498_0001_01_000002'}}
+{'timeline': '2017-01-03 11:01:46,550', 'event': {'user': 'root'}}
+{'timeline': '2017-01-03 11:01:46,552', 'event': {'attempt': 'appattempt_1483412440498_0001_000001', 'container': 'container_1483412440498_0001_01_000002'}}
+{'timeline': '2017-01-03 11:01:47,250', 'event': {'container': 'container_1483412440498_0001_01_000005', 'user': 'root', 'appid': 'application_1483412440498_0001'}}
+{'timeline': '2017-01-03 11:01:47,250', 'event': {'container': 'container_1483412440498_0001_01_000005'}}
+{'timeline': '2017-01-03 11:01:47,250', 'event': {'attempt': 'appattempt_1483412440498_0001_000001'}}
+{'timeline': '2017-01-03 11:01:51,505', 'event': {'container': 'container_1483412440498_0001_01_000005', 'user': 'root', 'appid': 'application_1483412440498_0001'}}
+{'timeline': '2017-01-03 11:01:51,505', 'event': {'container': 'container_1483412440498_0001_01_000005'}}
+{'timeline': '2017-01-03 11:01:51,505', 'event': {'user': 'root'}}
+{'timeline': '2017-01-03 11:01:51,507', 'event': {'attempt': 'appattempt_1483412440498_0001_000001', 'container': 'container_1483412440498_0001_01_000005'}}
+{'timeline': '2017-01-03 11:01:51,637', 'event': {'attempt': 'appattempt_1483412440498_0001_000001'}}
+{'timeline': '2017-01-03 11:01:58,178', 'event': {'container': 'container_1483412440498_0001_01_000001', 'user': 'root', 'appid': 'application_1483412440498_0001'}}
+{'timeline': '2017-01-03 11:01:58,179', 'event': {'container': 'container_1483412440498_0001_01_000001'}}
+{'timeline': '2017-01-03 11:01:58,179', 'event': {'user': 'root'}}
+{'timeline': '2017-01-03 11:01:58,180', 'event': {'attempt': 'appattempt_1483412440498_0001_000001', 'container': 'container_1483412440498_0001_01_000001'}}
+{'timeline': '2017-01-03 11:01:58,185', 'event': {'attempt': 'appattempt_1483412440498_0001_000001'}}
+{'timeline': '2017-01-03 11:01:58,186', 'event': {'user': 'root', 'appid': 'application_1483412440498_0001'}}
+{'timeline': '2017-01-03 11:01:58,192', 'event': {'user': 'root', 'appid': 'application_1483412440498_0001'}}
+{'timeline': '2017-01-03 11:36:52,877', 'event': {'user': 'root', 'appid': 'application_1483412440498_0002'}}
+{'timeline': '2017-01-03 11:36:52,879', 'event': {'attempt': 'appattempt_1483412440498_0002_000001'}}
+{'timeline': '2017-01-03 11:36:52,900', 'event': {'container': 'container_1483412440498_0002_01_000001', 'user': 'root', 'appid': 'application_1483412440498_0002'}}
+{'timeline': '2017-01-03 11:36:52,900', 'event': {'container': 'container_1483412440498_0002_01_000001'}}
+{'timeline': '2017-01-03 11:36:52,900', 'event': {'attempt': 'appattempt_1483412440498_0002_000001'}}
+{'timeline': '2017-01-03 11:36:52,912', 'event': {'container': 'container_1483412440498_0002_01_000001'}}
+{'timeline': '2017-01-03 11:37:00,641', 'event': {'attempt': 'appattempt_1483412440498_0002_000001', 'user': 'root', 'appid': 'application_1483412440498_0002'}}
+{'timeline': '2017-01-03 11:37:01,911', 'event': {'container': 'container_1483412440498_0002_01_000002', 'user': 'root', 'appid': 'application_1483412440498_0002'}}
+{'timeline': '2017-01-03 11:37:01,915', 'event': {'container': 'container_1483412440498_0002_01_000002'}}
+{'timeline': '2017-01-03 11:37:01,915', 'event': {'attempt': 'appattempt_1483412440498_0002_000001'}}
+{'timeline': '2017-01-03 11:37:02,532', 'event': {'container': 'container_1483412440498_0002_01_000003', 'user': 'root', 'appid': 'application_1483412440498_0002'}}
+{'timeline': '2017-01-03 11:37:02,532', 'event': {'container': 'container_1483412440498_0002_01_000003'}}
+{'timeline': '2017-01-03 11:37:02,533', 'event': {'attempt': 'appattempt_1483412440498_0002_000001'}}
+{'timeline': '2017-01-03 11:37:10,631', 'event': {'container': 'container_1483412440498_0002_01_000002', 'user': 'root', 'appid': 'application_1483412440498_0002'}}
+{'timeline': '2017-01-03 11:37:10,631', 'event': {'container': 'container_1483412440498_0002_01_000002'}}
+{'timeline': '2017-01-03 11:37:10,631', 'event': {'user': 'root'}}
+{'timeline': '2017-01-03 11:37:10,633', 'event': {'attempt': 'appattempt_1483412440498_0002_000001', 'container': 'container_1483412440498_0002_01_000002'}}
+{'timeline': '2017-01-03 11:37:12,543', 'event': {'container': 'container_1483412440498_0002_01_000004', 'user': 'root', 'appid': 'application_1483412440498_0002'}}
+{'timeline': '2017-01-03 11:37:12,543', 'event': {'container': 'container_1483412440498_0002_01_000004'}}
+{'timeline': '2017-01-03 11:37:12,544', 'event': {'attempt': 'appattempt_1483412440498_0002_000001'}}
+{'timeline': '2017-01-03 11:37:15,607', 'event': {'container': 'container_1483412440498_0002_01_000003', 'user': 'root', 'appid': 'application_1483412440498_0002'}}
+{'timeline': '2017-01-03 11:37:15,607', 'event': {'container': 'container_1483412440498_0002_01_000003'}}
+{'timeline': '2017-01-03 11:37:15,607', 'event': {'user': 'root'}}
+{'timeline': '2017-01-03 11:37:15,608', 'event': {'attempt': 'appattempt_1483412440498_0002_000001', 'container': 'container_1483412440498_0002_01_000003'}}
+{'timeline': '2017-01-03 11:37:17,472', 'event': {'container': 'container_1483412440498_0002_01_000004', 'user': 'root', 'appid': 'application_1483412440498_0002'}}
+{'timeline': '2017-01-03 11:37:17,472', 'event': {'container': 'container_1483412440498_0002_01_000004'}}
+{'timeline': '2017-01-03 11:37:17,472', 'event': {'user': 'root'}}
+{'timeline': '2017-01-03 11:37:17,473', 'event': {'attempt': 'appattempt_1483412440498_0002_000001', 'container': 'container_1483412440498_0002_01_000004'}}
+{'timeline': '2017-01-03 11:37:17,607', 'event': {'attempt': 'appattempt_1483412440498_0002_000001'}}
+{'timeline': '2017-01-03 11:37:24,109', 'event': {'container': 'container_1483412440498_0002_01_000001', 'user': 'root', 'appid': 'application_1483412440498_0002'}}
+{'timeline': '2017-01-03 11:37:24,109', 'event': {'container': 'container_1483412440498_0002_01_000001'}}
+{'timeline': '2017-01-03 11:37:24,110', 'event': {'user': 'root'}}
+{'timeline': '2017-01-03 11:37:24,110', 'event': {'user': 'root', 'appid': 'application_1483412440498_0002'}}
+{'timeline': '2017-01-03 11:37:24,110', 'event': {'attempt': 'appattempt_1483412440498_0002_000001', 'container': 'container_1483412440498_0002_01_000001'}}
+{'timeline': '2017-01-03 11:37:24,111', 'event': {'attempt': 'appattempt_1483412440498_0002_000001'}}
+{'timeline': '2017-01-03 11:37:24,111', 'event': {'user': 'root', 'appid': 'application_1483412440498_0002'}}
+{'timeline': '2017-01-03 11:39:31,827', 'event': {'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:39:31,829', 'event': {'attempt': 'appattempt_1483412440498_0003_000001'}}
+{'timeline': '2017-01-03 11:39:32,244', 'event': {'container': 'container_1483412440498_0003_01_000001', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:39:32,244', 'event': {'container': 'container_1483412440498_0003_01_000001'}}
+{'timeline': '2017-01-03 11:39:32,244', 'event': {'attempt': 'appattempt_1483412440498_0003_000001'}}
+{'timeline': '2017-01-03 11:39:32,469', 'event': {'container': 'container_1483412440498_0003_01_000001'}}
+{'timeline': '2017-01-03 11:39:40,370', 'event': {'attempt': 'appattempt_1483412440498_0003_000001', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:39:42,256', 'event': {'container': 'container_1483412440498_0003_01_000002', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:39:42,256', 'event': {'container': 'container_1483412440498_0003_01_000002'}}
+{'timeline': '2017-01-03 11:39:42,256', 'event': {'attempt': 'appattempt_1483412440498_0003_000001'}}
+{'timeline': '2017-01-03 11:39:42,257', 'event': {'container': 'container_1483412440498_0003_01_000003', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:39:42,257', 'event': {'container': 'container_1483412440498_0003_01_000003'}}
+{'timeline': '2017-01-03 11:39:42,257', 'event': {'attempt': 'appattempt_1483412440498_0003_000001'}}
+{'timeline': '2017-01-03 11:39:43,258', 'event': {'container': 'container_1483412440498_0003_01_000004', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:39:43,258', 'event': {'container': 'container_1483412440498_0003_01_000004'}}
+{'timeline': '2017-01-03 11:39:43,258', 'event': {'attempt': 'appattempt_1483412440498_0003_000001'}}
+{'timeline': '2017-01-03 11:39:44,261', 'event': {'container': 'container_1483412440498_0003_01_000005', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:39:44,261', 'event': {'container': 'container_1483412440498_0003_01_000005'}}
+{'timeline': '2017-01-03 11:39:44,261', 'event': {'attempt': 'appattempt_1483412440498_0003_000001'}}
+{'timeline': '2017-01-03 11:39:44,618', 'event': {'container': 'container_1483412440498_0003_01_000006', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:39:44,619', 'event': {'container': 'container_1483412440498_0003_01_000006'}}
+{'timeline': '2017-01-03 11:39:44,619', 'event': {'attempt': 'appattempt_1483412440498_0003_000001'}}
+{'timeline': '2017-01-03 11:39:46,485', 'event': {'container': 'container_1483412440498_0003_01_000006', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:39:46,485', 'event': {'container': 'container_1483412440498_0003_01_000006'}}
+{'timeline': '2017-01-03 11:39:46,486', 'event': {'user': 'root'}}
+{'timeline': '2017-01-03 11:39:46,487', 'event': {'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000006'}}
+{'timeline': '2017-01-03 11:39:58,352', 'event': {'container': 'container_1483412440498_0003_01_000003', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:39:58,352', 'event': {'container': 'container_1483412440498_0003_01_000003'}}
+{'timeline': '2017-01-03 11:39:58,353', 'event': {'user': 'root'}}
+{'timeline': '2017-01-03 11:39:58,354', 'event': {'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000003'}}
+{'timeline': '2017-01-03 11:39:58,635', 'event': {'container': 'container_1483412440498_0003_01_000007', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:39:58,635', 'event': {'container': 'container_1483412440498_0003_01_000007'}}
+{'timeline': '2017-01-03 11:39:58,635', 'event': {'attempt': 'appattempt_1483412440498_0003_000001'}}
+{'timeline': '2017-01-03 11:39:59,636', 'event': {'container': 'container_1483412440498_0003_01_000008', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:39:59,636', 'event': {'container': 'container_1483412440498_0003_01_000008'}}
+{'timeline': '2017-01-03 11:39:59,636', 'event': {'attempt': 'appattempt_1483412440498_0003_000001'}}
+{'timeline': '2017-01-03 11:40:00,354', 'event': {'container': 'container_1483412440498_0003_01_000009', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:40:00,354', 'event': {'container': 'container_1483412440498_0003_01_000009'}}
+{'timeline': '2017-01-03 11:40:00,354', 'event': {'attempt': 'appattempt_1483412440498_0003_000001'}}
+{'timeline': '2017-01-03 11:40:00,637', 'event': {'container': 'container_1483412440498_0003_01_000010', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:40:00,637', 'event': {'container': 'container_1483412440498_0003_01_000010'}}
+{'timeline': '2017-01-03 11:40:00,638', 'event': {'attempt': 'appattempt_1483412440498_0003_000001'}}
+{'timeline': '2017-01-03 11:40:01,358', 'event': {'container': 'container_1483412440498_0003_01_000011', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:40:01,358', 'event': {'container': 'container_1483412440498_0003_01_000011'}}
+{'timeline': '2017-01-03 11:40:01,358', 'event': {'attempt': 'appattempt_1483412440498_0003_000001'}}
+{'timeline': '2017-01-03 11:40:01,639', 'event': {'container': 'container_1483412440498_0003_01_000012', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:40:01,639', 'event': {'container': 'container_1483412440498_0003_01_000012'}}
+{'timeline': '2017-01-03 11:40:01,639', 'event': {'attempt': 'appattempt_1483412440498_0003_000001'}}
+{'timeline': '2017-01-03 11:40:01,812', 'event': {'container': 'container_1483412440498_0003_01_000004', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:40:01,812', 'event': {'container': 'container_1483412440498_0003_01_000004'}}
+{'timeline': '2017-01-03 11:40:01,812', 'event': {'user': 'root'}}
+{'timeline': '2017-01-03 11:40:01,813', 'event': {'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000004'}}
+{'timeline': '2017-01-03 11:40:01,813', 'event': {'container': 'container_1483412440498_0003_01_000013', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:40:01,813', 'event': {'container': 'container_1483412440498_0003_01_000013'}}
+{'timeline': '2017-01-03 11:40:01,813', 'event': {'attempt': 'appattempt_1483412440498_0003_000001'}}
+{'timeline': '2017-01-03 11:40:03,575', 'event': {'container': 'container_1483412440498_0003_01_000012', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:40:03,575', 'event': {'container': 'container_1483412440498_0003_01_000012'}}
+{'timeline': '2017-01-03 11:40:03,576', 'event': {'user': 'root'}}
+{'timeline': '2017-01-03 11:40:03,577', 'event': {'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000012'}}
+{'timeline': '2017-01-03 11:40:03,577', 'event': {'container': 'container_1483412440498_0003_01_000013', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:40:03,578', 'event': {'container': 'container_1483412440498_0003_01_000013'}}
+{'timeline': '2017-01-03 11:40:03,578', 'event': {'user': 'root'}}
+{'timeline': '2017-01-03 11:40:03,579', 'event': {'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000013'}}
+{'timeline': '2017-01-03 11:40:13,830', 'event': {'container': 'container_1483412440498_0003_01_000014', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:40:13,831', 'event': {'container': 'container_1483412440498_0003_01_000014'}}
+{'timeline': '2017-01-03 11:40:13,831', 'event': {'attempt': 'appattempt_1483412440498_0003_000001'}}
+{'timeline': '2017-01-03 11:40:29,063', 'event': {'container': 'container_1483412440498_0003_01_000002', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:40:29,063', 'event': {'container': 'container_1483412440498_0003_01_000002'}}
+{'timeline': '2017-01-03 11:40:29,063', 'event': {'user': 'root'}}
+{'timeline': '2017-01-03 11:40:29,064', 'event': {'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000002'}}
+{'timeline': '2017-01-03 11:40:30,064', 'event': {'container': 'container_1483412440498_0003_01_000014', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:40:30,064', 'event': {'container': 'container_1483412440498_0003_01_000014'}}
+{'timeline': '2017-01-03 11:40:30,064', 'event': {'user': 'root'}}
+{'timeline': '2017-01-03 11:40:30,065', 'event': {'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000014'}}
+{'timeline': '2017-01-03 11:40:41,612', 'event': {'container': 'container_1483412440498_0003_01_000005', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:40:41,612', 'event': {'container': 'container_1483412440498_0003_01_000005'}}
+{'timeline': '2017-01-03 11:40:41,612', 'event': {'user': 'root'}}
+{'timeline': '2017-01-03 11:40:41,613', 'event': {'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000005'}}
+{'timeline': '2017-01-03 11:40:41,627', 'event': {'container': 'container_1483412440498_0003_01_000007', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:40:41,627', 'event': {'container': 'container_1483412440498_0003_01_000007'}}
+{'timeline': '2017-01-03 11:40:41,627', 'event': {'user': 'root'}}
+{'timeline': '2017-01-03 11:40:41,628', 'event': {'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000007'}}
+{'timeline': '2017-01-03 11:40:49,104', 'event': {'container': 'container_1483412440498_0003_01_000010', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:40:49,104', 'event': {'container': 'container_1483412440498_0003_01_000010'}}
+{'timeline': '2017-01-03 11:40:49,104', 'event': {'user': 'root'}}
+{'timeline': '2017-01-03 11:40:49,106', 'event': {'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000010'}}
+{'timeline': '2017-01-03 11:40:49,325', 'event': {'container': 'container_1483412440498_0003_01_000011', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:40:49,325', 'event': {'container': 'container_1483412440498_0003_01_000011'}}
+{'timeline': '2017-01-03 11:40:49,326', 'event': {'user': 'root'}}
+{'timeline': '2017-01-03 11:40:49,326', 'event': {'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000011'}}
+{'timeline': '2017-01-03 11:40:49,498', 'event': {'container': 'container_1483412440498_0003_01_000008', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:40:49,498', 'event': {'container': 'container_1483412440498_0003_01_000008'}}
+{'timeline': '2017-01-03 11:40:49,499', 'event': {'user': 'root'}}
+{'timeline': '2017-01-03 11:40:49,500', 'event': {'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000008'}}
+{'timeline': '2017-01-03 11:40:49,522', 'event': {'container': 'container_1483412440498_0003_01_000009', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:40:49,522', 'event': {'container': 'container_1483412440498_0003_01_000009'}}
+{'timeline': '2017-01-03 11:40:49,522', 'event': {'user': 'root'}}
+{'timeline': '2017-01-03 11:40:49,522', 'event': {'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000009'}}
+{'timeline': '2017-01-03 11:40:49,662', 'event': {'attempt': 'appattempt_1483412440498_0003_000001'}}
+{'timeline': '2017-01-03 11:40:56,167', 'event': {'container': 'container_1483412440498_0003_01_000001', 'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:40:56,167', 'event': {'container': 'container_1483412440498_0003_01_000001'}}
+{'timeline': '2017-01-03 11:40:56,167', 'event': {'user': 'root'}}
+{'timeline': '2017-01-03 11:40:56,167', 'event': {'user': 'root', 'appid': 'application_1483412440498_0003'}}
+{'timeline': '2017-01-03 11:40:56,167', 'event': {'attempt': 'appattempt_1483412440498_0003_000001', 'container': 'container_1483412440498_0003_01_000001'}}
+{'timeline': '2017-01-03 11:40:56,167', 'event': {'attempt': 'appattempt_1483412440498_0003_000001'}}
+{'timeline': '2017-01-03 11:40:56,167', 'event': {'user': 'root', 'appid': 'application_1483412440498_0003'}}
