@@ -46,6 +46,23 @@ def getTypeRelation(ijDict, jiDict):
     return ijIs11, jiIs11
 
 
+# if a->b is 1:n, b->c is 1:n then remove a->c if exists
+def removeUnusedRelation():
+    typeList = typeRelationGraph.keys()
+    for aType in typeList:
+        for bType in typeList:
+            if aType == bType or bType not in typeRelationGraph[aType] or typeRelationGraph[aType][bType] != 2:
+                continue
+            for cType in typeList:
+                if cType == aType or cType == bType:
+                    continue
+                if cType not in typeRelationGraph[aType] or cType not in typeRelationGraph[bType]:
+                    continue
+                if typeRelationGraph[aType][cType] == 2 and typeRelationGraph[bType][cType] == 2:
+                    del typeRelationGraph[aType][cType]
+                    del typeRelationGraph[cType][aType]
+
+
 def updateTypeRelationGraph(event):
     updateTypePairListGraph(event)
     candidateTypes = event.keys()

@@ -1,6 +1,7 @@
 # encoding=utf-8
 
 import json
+import re
 
 
 class ComplexEncoder(json.JSONEncoder):
@@ -70,5 +71,20 @@ def testJoin():
     print '*'.join(a)
 
 
+def testRe():
+    line = '2017-01-03 11:01:25,041 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.SchedulerNode: Assigned container container_1483412440498_0001_01_000001 of capacity <memory:2048, vCores:1> on host tfs04:38559, which has 1 containers, <memory:2048, vCores:1> used and <memory:6144, vCores:7> available after allocation'
+    m = re.search('container [a-z]+_[0-9]+_[0-9]+_[0-9]+_[0-9]+', line, re.I)
+    if m:
+        print 'match: ', m.group()
+    else:
+        print 'not match'
+
+
+def testSplit():
+    line = "attemp atempasdf_2324_535_34535"
+    array = re.split('=| ', line)
+    print array
+
+
 if __name__ == '__main__':
-    testLambda()
+    testSplit()

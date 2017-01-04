@@ -1,5 +1,6 @@
 # encoding=utf-8
 import json
+import LogParser
 
 JOIN_CHAR = '*'
 
@@ -17,15 +18,17 @@ def byteify(inData):
 
 
 def getEvents():
-    f = open("data/events.data")
-    events = []
-    while 1:
-        line = f.readline()
-        if not line:
-            break
-        try:
-            events.append(byteify(json.loads(line.encode('utf8'))))
-        except Exception as e:
-            print e
-    f.close()
-    return events
+    return LogParser.parseLog()
+
+    # f = open("data/events.data")
+    # events = []
+    # while 1:
+    #     line = f.readline()
+    #     if not line:
+    #         break
+    #     try:
+    #         events.append(byteify(json.loads(line.encode('utf8'))))
+    #     except Exception as e:
+    #         print e
+    # f.close()
+    # return events

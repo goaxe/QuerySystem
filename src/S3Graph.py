@@ -6,13 +6,12 @@ import TypeRelationGraph
 
 
 class Node:
-    def __init__(self, name, isEqual=False):
+    def __init__(self, name):
         self.signature = set()
         if isinstance(name, list) or isinstance(name, set):
             self.signature.update(name)
         else:
             self.signature.update(name.split(CommonUtils.JOIN_CHAR))
-        self.isEqual = isEqual
 
     def __repr__(self):
         return self.getName()
@@ -114,7 +113,7 @@ def merge11Nodes(typeRelationGraph, events):
         if len(typeNames) == 1:
             continue
 
-        node = Node(typeNames, True)
+        node = Node(typeNames)
         s3Graph[node] = set()
         kvList = []
 
@@ -138,6 +137,13 @@ def merge11Nodes(typeRelationGraph, events):
             if not hasExist:
                 kvList.append(eventKvs)
 
+        unCompletedItems = []
+        for item in kvList:
+            if len(item) != len(typeNames):
+                unCompletedItems.append(item)
+        for item in unCompletedItems:
+            kvList.remove(item)
+
         for event in events:
             hasExist = False
             k, v = '', ''
@@ -149,7 +155,8 @@ def merge11Nodes(typeRelationGraph, events):
             if hasExist:
                 for kvDict in kvList:
                     if k in kvDict and kvDict[k] == v:
-                        event[node.getName()] = CommonUtils.JOIN_CHAR.join(kvDict[key] for key in (set(node.signature) & set(kvDict.keys())))
+                        for key in node.signature:
+                            event[key] = kvDict[key]
                         break
 
         mergeNodesInS3Graph(typeNames, node)
@@ -255,7 +262,15 @@ def constructS3Graph(events):
             merge11Nodes(typeRelationGraph, subEvents)
             mergeMNNodes(typeRelationGraph, subEvents)
             filterNonObjects()
-    return s3Graph
+    typeRelationGraph = TypeRelationGraph.typeRelationGraph
+    TypeRelationGraph.removeUnusedRelation()
+    initS3GraphFromTypeRelationGraph(typeRelationGraph)
+    subEvents = deepcopy(events)
+    merge11Nodes(typeRelationGraph, subEvents)
+    mergeMNNodes(typeRelationGraph, subEvents)
+    filterNonObjects()
+
+    return subEvents, s3Graph
 
 
 if __name__ == '__main__':

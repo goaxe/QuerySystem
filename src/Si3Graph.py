@@ -6,7 +6,7 @@ import json
 
 
 class Si3GraphNode:
-    def __init__(self, signature, event, isEqual=False):
+    def __init__(self, signature, event):
         self.signature = set()
         self.signature.update(signature)
         self.identifiers = {}
@@ -17,7 +17,6 @@ class Si3GraphNode:
         self.events.add(str(event))
         self.children = set()
         self.links = set()
-        self.isEqual = isEqual
 
     def __repr__(self):
         return self.getName()
@@ -53,22 +52,16 @@ class ComplexEncoder(json.JSONEncoder):
 
 
 def s3NodeMatchEvent(s3Node, event):
-    if s3Node.isEqual:
-        for typeName in s3Node.signature:
-            if typeName in event:
-                return True
     return s3Node.signature.issubset(event.keys())
 
 
 def si3NodeMatchEvent(si3Node, event):
-    if si3Node.isEqual:
-        for k, v in si3Node.identifiers.items():
-            if k in event and event[k] == v:
-                return True
     return set(si3Node.identifiers.items()).issubset(event.items())
 
 
 def updateSi3Graph(Si3Graph, S3Graph, event):
+    if not event.keys():
+        return
     matchNodes = []
     for s3Node in Si3Graph.keys():
         si3NodeSet = Si3Graph[s3Node]
@@ -79,7 +72,7 @@ def updateSi3Graph(Si3Graph, S3Graph, event):
     if not matchNodes:
         for s3Node in S3Graph.keys():
             if s3NodeMatchEvent(s3Node, event):
-                si3Node = Si3GraphNode(s3Node.signature, event, s3Node.isEqual)
+                si3Node = Si3GraphNode(s3Node.signature, event)
                 if s3Node not in Si3Graph:
                     Si3Graph[s3Node] = set()
                 Si3Graph[s3Node].add(si3Node)
@@ -101,7 +94,7 @@ def updateSi3Graph(Si3Graph, S3Graph, event):
                     matchNode = childrenSi3Node
                     break
             if not matchNode:
-                matchNode = Si3GraphNode(childrenNode.signature, event, childrenNode.isEqual)
+                matchNode = Si3GraphNode(childrenNode.signature, event)
                 Si3Graph[childrenNode].add(matchNode)
 
             bfsSi3Nodes.append(matchNode)
@@ -132,8 +125,8 @@ def constructSi3Graph(s3Graph, events):
 
 
 def getJsTreeData():
-    s3Graph = constructS3Graph(getEvents())
-    si3Graph = constructSi3Graph(s3Graph, getEvents())
+    subEvents, s3Graph = constructS3Graph(getEvents())
+    si3Graph = constructSi3Graph(s3Graph, subEvents)
     rootNodes = getRootNodesFromS3Graph(s3Graph)
     jsTreeData = constructJSTreeData(si3Graph, rootNodes)
 
