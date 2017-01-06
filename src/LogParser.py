@@ -1,6 +1,8 @@
 # encoding: UTF-8
 
 import re
+import time
+import datetime
 
 
 def parse(line):
@@ -14,12 +16,12 @@ def parse(line):
         'attempt=[a-z]+_[0-9]+_[0-9]+_[0-9]+',
         'attempt [a-z]+_[0-9]+_[0-9]+_[0-9]+'
     ]
-    timeRegex = '[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2},[0-9]{3}'
+    timeRegex = '[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}'
 
     log = dict()
     m = re.search(timeRegex, line)
     if m:
-        log['timeline'] = str(m.group())
+        log['timeline'] = time.mktime(datetime.datetime.strptime(str(m.group()), '%Y-%m-%d %H:%M:%S').timetuple())
     else:
         return log
 

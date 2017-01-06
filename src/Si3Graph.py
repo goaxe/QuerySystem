@@ -3,6 +3,7 @@
 from CommonUtils import JOIN_CHAR, getEvents
 from S3Graph import Node, constructS3Graph
 import json
+import sys
 
 
 class Si3GraphNode:
@@ -142,11 +143,18 @@ def getJsTreeData():
 
 def constructJSTreeDataRecursively(data, si3Node):
     data['text'] = si3Node.getName()
+    data['times'] = list()
+    maxTimeline, minTimeline = 0, sys.maxint
+    for timeline in si3Node.times:
+        maxTimeline, minTimeline = max(maxTimeline, timeline), min(minTimeline, timeline)
+        data['times'].append(timeline)
     data['children'] = list()
     children = list(si3Node.children)
     for i in range(len(children)):
         data['children'].append(dict())
-        constructJSTreeDataRecursively(data['children'][i], children[i])
+        tmpMax, tmpMin = constructJSTreeDataRecursively(data['children'][i], children[i])
+        minTimeline, maxTimeline = min(tmpMin, minTimeline), max(tmpMax, maxTimeline)
+    return maxTimeline, minTimeline
 
 
 def constructJSTreeData(si3Graph, rootNodes):
@@ -157,7 +165,11 @@ def constructJSTreeData(si3Graph, rootNodes):
         rootSi3Nodes.extend(si3Graph[rootNode])
     for rootSi3Node in rootSi3Nodes:
         rootData = dict()
-        constructJSTreeDataRecursively(rootData, rootSi3Node)
+        maxTimeline, minTimeline = constructJSTreeDataRecursively(rootData, rootSi3Node)
+        print 'timeline: ', maxTimeline, minTimeline
+        rootData['maxTimeline'] = maxTimeline
+        rootData['minTimeline'] = minTimeline
+        print 'times size: ', len(rootData['times'])
         rootsData.append(rootData)
     jsTreeData['core'] = dict()
     jsTreeData['core']['data'] = rootsData

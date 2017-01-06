@@ -6,38 +6,79 @@
         ul{
             margin: 0 0
         }
+        .circle {
+            border-radius: 50%;
+            width: 4px;
+            height: 4px;
+            background-color: red;
+            position: absolute;
+            top: calc(50% - 2px);
+        }
+        .line {
+            width:300px;
+            height: 1px;
+            background-color: black;
+            position: absolute;
+            top: calc(50% - 0.5px);
+        }
     </style>
 </head>
 
 <body>
-<div id="jstree_demo_div">
+<table>
+    <tr>
+        <td><div id="component_div"></div></td>
+        <td><div id="timeline_div">
+        </div></td>
+    </tr>
 
-</div>
+</table>
+
 <script>
-    function dfs(rootNode, jsonData) {
-        var textDiv = document.createTextNode(jsonData['text'])
-        console.log('rootNode:', rootNode)
-        rootNode.append(jsonData['text'])
+    function dfs(rootComponentNode, rootTimelineNode, jsonData, maxTimeline, minTimeline, maxWidth) {
+        rootComponentNode.append(jsonData['text'])
+        var lineDiv = $('<div></div>')
+        lineDiv.addClass("line")
+
+        var div = $('<div></div>')
+        div.css('position', 'relative')
+        div.css('height', '23.2px')
+        div.append(lineDiv)
+
+        $.each(jsonData['times'], function(n, timeline) {
+            var xPos = (timeline - minTimeline)*maxWidth / (maxTimeline - minTimeline)
+            console.log('timeline', timeline)
+            console.log('max', maxTimeline)
+            console.log('min', minTimeline)
+            console.log('width', maxWidth)
+            console.log('delta', maxTimeline - minTimeline)
+            console.log('xpos', xPos)
+            var circleDiv = $('<div></div')
+            circleDiv.addClass("circle")
+            circleDiv.css('margin-left', xPos)
+            div.append(circleDiv)
+        })
+        rootTimelineNode.append(div)
+
         if (jsonData['children']) {
             var ul = document.createElement('ul')
             var jsonArray = jsonData['children']
             $.each(jsonArray,function(n, jsonObject) {
                 var li = document.createElement('li')
                 var itemDiv = document.createElement('div')
-                dfs(itemDiv, jsonObject)
+                dfs(itemDiv, rootTimelineNode, jsonObject, maxTimeline, minTimeline, maxWidth)
                 li.append(itemDiv)
                 ul.append(li)
             })
-            rootNode.append(ul)
+            rootComponentNode.append(ul)
         }
     }
 
     $(function () {
         var jsondata = JSON.parse('{{ data | tojson }}')['core']['data'][0]
         console.log(jsondata)
-        dfs($('#jstree_demo_div'), jsondata)
 
-{#        $('#jstree_demo_div').jstree(jsondata);#}
+        dfs($('#component_div'), $('#timeline_div'), jsondata, jsondata['maxTimeline'], jsondata['minTimeline'], 200)
     });
 </script>
 </body>
