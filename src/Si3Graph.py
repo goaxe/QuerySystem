@@ -6,7 +6,8 @@ import json
 
 
 class Si3GraphNode:
-    def __init__(self, signature, event):
+    def __init__(self, signature, log):
+        timeline, event = log['timeline'], log['event']
         self.signature = set()
         self.signature.update(signature)
         self.identifiers = {}
@@ -15,6 +16,9 @@ class Si3GraphNode:
                 self.identifiers[typeName] = event[typeName]
         self.events = set()
         self.events.add(str(event))
+        self.times = set()
+        self.times.add(timeline)
+
         self.children = set()
         self.links = set()
 
@@ -59,7 +63,8 @@ def si3NodeMatchEvent(si3Node, event):
     return set(si3Node.identifiers.items()).issubset(event.items())
 
 
-def updateSi3Graph(Si3Graph, S3Graph, event):
+def updateSi3Graph(Si3Graph, S3Graph, log):
+    timeline, event = log['timeline'], log['event']
     if not event.keys():
         return
     matchNodes = []
@@ -68,11 +73,12 @@ def updateSi3Graph(Si3Graph, S3Graph, event):
         for si3Node in si3NodeSet:
             if si3NodeMatchEvent(si3Node, event):
                 si3Node.events.add(str(event))
+                si3Node.times.add(timeline)
                 matchNodes.append(si3Node)
     if not matchNodes:
         for s3Node in S3Graph.keys():
             if s3NodeMatchEvent(s3Node, event):
-                si3Node = Si3GraphNode(s3Node.signature, event)
+                si3Node = Si3GraphNode(s3Node.signature, log)
                 if s3Node not in Si3Graph:
                     Si3Graph[s3Node] = set()
                 Si3Graph[s3Node].add(si3Node)
@@ -94,11 +100,12 @@ def updateSi3Graph(Si3Graph, S3Graph, event):
                     matchNode = childrenSi3Node
                     break
             if not matchNode:
-                matchNode = Si3GraphNode(childrenNode.signature, event)
+                matchNode = Si3GraphNode(childrenNode.signature, log)
                 Si3Graph[childrenNode].add(matchNode)
 
             bfsSi3Nodes.append(matchNode)
             matchNode.events.add(str(event))
+            matchNode.times.add(timeline)
             bfsSi3Node.children.add(matchNode)
 
     for iNode in matchNodes:
@@ -116,17 +123,17 @@ def getRootNodesFromS3Graph(s3Graph):
     return allNodes - childrenNodes
 
 
-def constructSi3Graph(s3Graph, events):
+def constructSi3Graph(s3Graph, logs):
     si3Graph = {}
-    for event in events:
-        updateSi3Graph(si3Graph, s3Graph, event)
+    for log in logs:
+        updateSi3Graph(si3Graph, s3Graph, log)
 
     return si3Graph
 
 
 def getJsTreeData():
-    subEvents, s3Graph = constructS3Graph(getEvents())
-    si3Graph = constructSi3Graph(s3Graph, subEvents)
+    subLogs, s3Graph = constructS3Graph(getEvents())
+    si3Graph = constructSi3Graph(s3Graph, subLogs)
     rootNodes = getRootNodesFromS3Graph(s3Graph)
     jsTreeData = constructJSTreeData(si3Graph, rootNodes)
 

@@ -7,7 +7,6 @@ def parse(line):
     regexList = [
         'appid=[a-z]+_[0-9]+_[0-9]+',
         'user=[a-z]+',
-        # 'ip=[0-9]+.[0-9]+.[0-9]+.[0-9]+',
         'containerid=[a-z]+_[0-9]+_[0-9]+_[0-9]+_[0-9]+',
         'container=[a-z]+_[0-9]+_[0-9]+_[0-9]+_[0-9]+',
         'container [a-z]+_[0-9]+_[0-9]+_[0-9]+_[0-9]+',
@@ -22,7 +21,6 @@ def parse(line):
     if m:
         log['timeline'] = str(m.group())
     else:
-        print 'not match'
         return log
 
     event = dict()
@@ -59,10 +57,8 @@ def parseLog():
     for log in logs:
         f.write(str(log) + '\n')
     f.close()
-    events = [log['event'] for log in logs]
 
-
-    return events
+    return logs
 
 
 if __name__ == '__main__':

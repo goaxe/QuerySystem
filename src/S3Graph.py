@@ -252,25 +252,25 @@ def filterNonObjects():
             s3Graph[node].remove(node)
 
 
-def constructS3Graph(events):
-    for i in range(len(events)):
-        updated = TypeRelationGraph.updateTypeRelationGraph(events[i])
+def constructS3Graph(logs):
+    for i in range(len(logs)):
+        updated = TypeRelationGraph.updateTypeRelationGraph(logs[i]['event'])
         if updated:
             typeRelationGraph = TypeRelationGraph.typeRelationGraph
             initS3GraphFromTypeRelationGraph(typeRelationGraph)
-            subEvents = deepcopy(events[0:i + 1])
-            merge11Nodes(typeRelationGraph, subEvents)
-            mergeMNNodes(typeRelationGraph, subEvents)
+            subLogs = deepcopy(logs[0:i + 1])
+            merge11Nodes(typeRelationGraph, [log['event'] for log in subLogs])
+            mergeMNNodes(typeRelationGraph, [log['event'] for log in subLogs])
             filterNonObjects()
     typeRelationGraph = TypeRelationGraph.typeRelationGraph
     TypeRelationGraph.removeUnusedRelation()
     initS3GraphFromTypeRelationGraph(typeRelationGraph)
-    subEvents = deepcopy(events)
-    merge11Nodes(typeRelationGraph, subEvents)
-    mergeMNNodes(typeRelationGraph, subEvents)
+    subLogs = deepcopy(logs)
+    merge11Nodes(typeRelationGraph, [log['event'] for log in subLogs])
+    mergeMNNodes(typeRelationGraph, [log['event'] for log in subLogs])
     filterNonObjects()
 
-    return subEvents, s3Graph
+    return subLogs, s3Graph
 
 
 if __name__ == '__main__':

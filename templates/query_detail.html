@@ -2,6 +2,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+    <style>
+        ul{
+            margin: 0 0
+        }
+    </style>
 </head>
 
 <body>
@@ -9,10 +14,30 @@
 
 </div>
 <script>
+    function dfs(rootNode, jsonData) {
+        var textDiv = document.createTextNode(jsonData['text'])
+        console.log('rootNode:', rootNode)
+        rootNode.append(jsonData['text'])
+        if (jsonData['children']) {
+            var ul = document.createElement('ul')
+            var jsonArray = jsonData['children']
+            $.each(jsonArray,function(n, jsonObject) {
+                var li = document.createElement('li')
+                var itemDiv = document.createElement('div')
+                dfs(itemDiv, jsonObject)
+                li.append(itemDiv)
+                ul.append(li)
+            })
+            rootNode.append(ul)
+        }
+    }
+
     $(function () {
-        var jsondata = '{{ data | tojson }}'
+        var jsondata = JSON.parse('{{ data | tojson }}')['core']['data'][0]
         console.log(jsondata)
-        $('#jstree_demo_div').jstree(JSON.parse(jsondata));
+        dfs($('#jstree_demo_div'), jsondata)
+
+{#        $('#jstree_demo_div').jstree(jsondata);#}
     });
 </script>
 </body>
