@@ -8,7 +8,7 @@ import sys
 
 class Si3GraphNode:
     def __init__(self, signature, log):
-        timeline, event = log['timeline'], log['event']
+        timestamp, event = log['timestamp'], log['event']
         self.signature = set()
         self.signature.update(signature)
         self.identifiers = {}
@@ -18,7 +18,7 @@ class Si3GraphNode:
         self.events = set()
         self.events.add(str(event))
         self.times = set()
-        self.times.add(timeline)
+        self.times.add(timestamp)
 
         self.children = set()
         self.links = set()
@@ -45,6 +45,7 @@ class Si3GraphNode:
 
 
 class ComplexEncoder(json.JSONEncoder):
+
     def default(self, o):
         if hasattr(o, 'reprJSON'):
             return o.reprJSON()
@@ -65,7 +66,7 @@ def si3NodeMatchEvent(si3Node, event):
 
 
 def updateSi3Graph(Si3Graph, S3Graph, log):
-    timeline, event = log['timeline'], log['event']
+    timestamp, event = log['timestamp'], log['event']
     if not event.keys():
         return
     matchNodes = []
@@ -74,7 +75,7 @@ def updateSi3Graph(Si3Graph, S3Graph, log):
         for si3Node in si3NodeSet:
             if si3NodeMatchEvent(si3Node, event):
                 si3Node.events.add(str(event))
-                si3Node.times.add(timeline)
+                si3Node.times.add(timestamp)
                 matchNodes.append(si3Node)
     if not matchNodes:
         for s3Node in S3Graph.keys():
@@ -106,7 +107,7 @@ def updateSi3Graph(Si3Graph, S3Graph, log):
 
             bfsSi3Nodes.append(matchNode)
             matchNode.events.add(str(event))
-            matchNode.times.add(timeline)
+            matchNode.times.add(timestamp)
             bfsSi3Node.children.add(matchNode)
 
     for iNode in matchNodes:
@@ -136,45 +137,43 @@ def getJsTreeData():
     subLogs, s3Graph = constructS3Graph(getEvents())
     si3Graph = constructSi3Graph(s3Graph, subLogs)
     rootNodes = getRootNodesFromS3Graph(s3Graph)
-    jsTreeData = constructJSTreeData(si3Graph, rootNodes)
+    rootDatas = constructJSTreeData(si3Graph, rootNodes)
 
-    return jsTreeData
+    return rootDatas
 
 
 def constructJSTreeDataRecursively(data, si3Node):
     data['text'] = si3Node.getName()
     data['times'] = list()
-    maxTimeline, minTimeline = 0, sys.maxint
-    for timeline in si3Node.times:
-        maxTimeline, minTimeline = max(maxTimeline, timeline), min(minTimeline, timeline)
-        data['times'].append(timeline)
+    maxTimestamp, minTimestamp = 0, sys.maxint
+    for timestamp in si3Node.times:
+        maxTimestamp, minTimestamp = max(maxTimestamp, timestamp), min(minTimestamp, timestamp)
+        data['times'].append(timestamp)
     data['children'] = list()
     children = list(si3Node.children)
     for i in range(len(children)):
         data['children'].append(dict())
         tmpMax, tmpMin = constructJSTreeDataRecursively(data['children'][i], children[i])
-        minTimeline, maxTimeline = min(tmpMin, minTimeline), max(tmpMax, maxTimeline)
-    return maxTimeline, minTimeline
+        maxTimestamp, minTimestamp = max(tmpMax, maxTimestamp), min(tmpMin, minTimestamp)
+    return maxTimestamp, minTimestamp
 
 
 def constructJSTreeData(si3Graph, rootNodes):
-    jsTreeData = dict()
-    rootsData = []
+    rootDatas = []
     rootSi3Nodes = []
     for rootNode in rootNodes:
         rootSi3Nodes.extend(si3Graph[rootNode])
     for rootSi3Node in rootSi3Nodes:
         rootData = dict()
-        maxTimeline, minTimeline = constructJSTreeDataRecursively(rootData, rootSi3Node)
-        print 'timeline: ', maxTimeline, minTimeline
-        rootData['maxTimeline'] = maxTimeline
-        rootData['minTimeline'] = minTimeline
-        print 'times size: ', len(rootData['times'])
-        rootsData.append(rootData)
-    jsTreeData['core'] = dict()
-    jsTreeData['core']['data'] = rootsData
+        maxTimestamp, minTimestamp = constructJSTreeDataRecursively(rootData, rootSi3Node)
+        rootData['maxTimestamp'] = maxTimestamp
+        rootData['minTimestamp'] = minTimestamp
+        rootDatas.append(rootData)
+    # jsTreeData['core'] = dict()
+    # jsTreeData['core']['data'] = rootsData
+    # print 'jsTreeData: ', jsTreeData
 
-    return jsTreeData
+    return rootDatas
 
 
 if __name__ == '__main__':

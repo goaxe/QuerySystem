@@ -21,7 +21,7 @@ def parse(line):
     log = dict()
     m = re.search(timeRegex, line)
     if m:
-        log['timeline'] = time.mktime(datetime.datetime.strptime(str(m.group()), '%Y-%m-%d %H:%M:%S').timetuple())
+        log['timestamp'] = time.mktime(datetime.datetime.strptime(str(m.group()), '%Y-%m-%d %H:%M:%S').timetuple())
     else:
         return log
 

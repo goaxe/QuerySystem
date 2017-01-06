@@ -25,60 +25,62 @@
 </head>
 
 <body>
-<table>
-    <tr>
-        <td><div id="component_div"></div></td>
-        <td><div id="timeline_div">
-        </div></td>
-    </tr>
-
+<table id="display_table">
 </table>
 
 <script>
-    function dfs(rootComponentNode, rootTimelineNode, jsonData, maxTimeline, minTimeline, maxWidth) {
-        rootComponentNode.append(jsonData['text'])
-        var lineDiv = $('<div></div>')
-        lineDiv.addClass("line")
+    function dfs(rootComponentNode, rootTimestampNode, jsonData, maxTimestamp, minTimestamp, maxWidth) {
+        rootComponentNode.append(jsonData['text']);
+        var lineDiv = $('<div></div>');
+        lineDiv.addClass("line");
 
-        var div = $('<div></div>')
-        div.css('position', 'relative')
-        div.css('height', '23.2px')
-        div.append(lineDiv)
+        var div = $('<div></div>');
+        div.css('position', 'relative');
+        div.css('height', '23.2px');
+        div.append(lineDiv);
 
-        $.each(jsonData['times'], function(n, timeline) {
-            var xPos = (timeline - minTimeline)*maxWidth / (maxTimeline - minTimeline)
-            console.log('timeline', timeline)
-            console.log('max', maxTimeline)
-            console.log('min', minTimeline)
-            console.log('width', maxWidth)
-            console.log('delta', maxTimeline - minTimeline)
-            console.log('xpos', xPos)
-            var circleDiv = $('<div></div')
-            circleDiv.addClass("circle")
-            circleDiv.css('margin-left', xPos)
-            div.append(circleDiv)
-        })
-        rootTimelineNode.append(div)
+        console.log(jsonData['text'], jsonData['times'].length);
+
+        $.each(jsonData['times'], function(n, timestamp) {
+            var xPos = (timestamp - minTimestamp)*maxWidth / (maxTimestamp - minTimestamp);
+            var circleDiv = $('<div></div');
+            console.log(maxTimestamp, minTimestamp, timestamp);
+            circleDiv.addClass("circle");
+            circleDiv.css('margin-left', xPos);
+            div.append(circleDiv);
+        });
+        rootTimestampNode.append(div);
 
         if (jsonData['children']) {
-            var ul = document.createElement('ul')
-            var jsonArray = jsonData['children']
+            var ul = $('<ul></ul>');
+            var jsonArray = jsonData['children'];
             $.each(jsonArray,function(n, jsonObject) {
-                var li = document.createElement('li')
-                var itemDiv = document.createElement('div')
-                dfs(itemDiv, rootTimelineNode, jsonObject, maxTimeline, minTimeline, maxWidth)
-                li.append(itemDiv)
+                var li = $('<li></li>');
+                var itemDiv = $('<div></div>');
+                dfs(itemDiv, rootTimestampNode, jsonObject, maxTimestamp, minTimestamp, maxWidth);
+                li.append(itemDiv);
                 ul.append(li)
-            })
+            });
             rootComponentNode.append(ul)
         }
     }
 
     $(function () {
-        var jsondata = JSON.parse('{{ data | tojson }}')['core']['data'][0]
-        console.log(jsondata)
+        var jsonArray = JSON.parse('{{ data | tojson }}');
+        console.log(jsonArray);
 
-        dfs($('#component_div'), $('#timeline_div'), jsondata, jsondata['maxTimeline'], jsondata['minTimeline'], 200)
+        $.each(jsonArray, function(n, jsonData) {
+            var tr = $('<tr></tr>');
+            var componentTd = $('<td></td>');
+            var componentDiv = $('<div></div>');
+            var timestampTd = $('<td></td>');
+            var timestampDiv = $('<div></div>');
+            dfs(componentDiv, timestampDiv, jsonData, jsonData['maxTimestamp'], jsonData['minTimestamp'], 200);
+            componentTd.append(componentDiv);
+            timestampTd.append(timestampDiv);
+            tr.append(componentTd, timestampTd);
+            $('#display_table').append(tr);
+        })
     });
 </script>
 </body>
